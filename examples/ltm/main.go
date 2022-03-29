@@ -5,13 +5,13 @@ import (
 	"io"
 	"os"
 
-	"go.fergus.london/telemetry"
+	"go.fergus.london/telemetry/ltm"
 )
 
 func main() {
 	if len(os.Args) < 2 {
 		fmt.Printf(
-			"Usage: %s [filename]\n\n\t- [filename] file containing raw binary LTM binary data.\n",
+			"Usage: %s [filename]\n\n\t- [filename] file containing raw LTM data.\n",
 			os.Args[0],
 		)
 		return
@@ -19,7 +19,7 @@ func main() {
 
 	var (
 		dataFile *os.File
-		frames   []telemetry.DecodableFrame
+		frames   []ltm.DecodableFrame
 		err      error
 	)
 
@@ -28,7 +28,7 @@ func main() {
 	}
 	defer dataFile.Close()
 
-	if frames, err = telemetry.Parse(dataFile); err != nil && err != io.EOF {
+	if frames, err = ltm.Parse(dataFile); err != nil && err != io.EOF {
 		panic(err)
 	}
 

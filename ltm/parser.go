@@ -1,5 +1,5 @@
 // @see https://github.com/iNavFlight/inav/wiki/Lightweight-Telemetry-(LTM)
-package telemetry
+package ltm
 
 import (
 	"io"

@@ -3,4 +3,4 @@ clean:
 	rm -f parser
 
 example: clean
-	go build -o parser ./example/main.go
+	go build -o parser ./examples/ltm/main.go
